@@ -21,4 +21,4 @@ app.use((err, req, res, next) => {
   res.status(500).send("Sorry! Something went wrong :(");
 });
 
-export default router;
+export default app;
