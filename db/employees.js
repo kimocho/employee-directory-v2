@@ -12,7 +12,8 @@ const employees = [
 ];
 
 export function newName(name) {
-  const newObj = { id: employees.length + 1, name }
-  return newObj;
+  const newEmployee = { id: employees.length + 1, name };
+  employees.push(newEmployee);
+  return newEmployee;
 }
 export default employees;

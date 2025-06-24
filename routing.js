@@ -1,9 +1,17 @@
 import express from 'express';
-import employees from "#db/employees";
+import employees, { newName } from "#db/employees";
 const employeeRouter = express.Router();
 
 employeeRouter.get("/", (req, res) => {
   res.send(employees);
+});
+
+employeeRouter.post("/", (req, res, next) => {
+  if (!req.body || !req.body.name) {
+    res.status(400).send('no body given');
+  }
+
+  res.status(201).send(newName(req.body.name));
 });
 
 employeeRouter.get("/random", (req, res) => {
