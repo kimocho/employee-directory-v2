@@ -11,4 +11,8 @@ const employees = [
   { id: 10, name: "Gwen Grollmann" },
 ];
 
+export function newName(name) {
+  const newObj = { id: employees.length + 1, name }
+  return newObj;
+}
 export default employees;
