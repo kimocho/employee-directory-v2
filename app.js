@@ -1,25 +1,23 @@
 import express from "express";
 import employeeRouter from "#routing";
-import employeeRouter from "#routing";
-import router from './api/index.js';
-import { newName } from "#db/notes";
+import { newName } from "#db/employees";
 
-const router = express.Router();
+const app = express();
 
-router.use(express.json());
-router.use('/employee', employeeRouter);
+app.use(express.json());
+app.use('/employee', employeeRouter);
 
-router.post((req, res) => {
+app.post((req, res) => {
   if (!req.body) return res.status(400).send("Name or request body not correctly provided.");
   const newEmployeeName = newName();
   res.status(201).send(newEmployeeName);
 });
 
-router.get("/", (req, res) => {
+app.get("/", (req, res) => {
   res.send("Hello employees!");
 });
 
-router.use((err, req, res, next) => {
+app.use((err, req, res, next) => {
   res.status(500).send("Sorry! Something went wrong :(");
 });
 
